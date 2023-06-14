@@ -1,19 +1,14 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import {
-  Search,
-  Menu,
-  ShoppingBag,
-  ChevronDown,
-  X,
-} from 'react-feather';
+import React from "react";
+import styled from "styled-components/macro";
+import { AlignJustify, ChevronDown, Menu, Search, ShoppingBag, X } from "react-feather";
 
 const icons = {
-  search: Search,
-  menu: Menu,
-  'shopping-bag': ShoppingBag,
-  'chevron-down': ChevronDown,
+  "chevron-down": ChevronDown,
   close: X,
+  hamburger: AlignJustify,
+  menu: Menu,
+  search: Search,
+  "shopping-bag": ShoppingBag,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
@@ -33,8 +28,7 @@ const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
 const Wrapper = styled.div`
   & > svg {
     display: block;
-    stroke-width: ${(p) =>
-      p.strokeWidth !== undefined ? p.strokeWidth + 'px' : undefined};
+    stroke-width: ${(p) => (p.strokeWidth !== undefined ? p.strokeWidth + "px" : undefined)};
   }
 `;
 

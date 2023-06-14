@@ -1,10 +1,12 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
-import MobileMenu from '../MobileMenu';
+import { COLORS, QUERIES, WEIGHTS } from "../../constants";
+import Icon from "../Icon/Icon";
+import Logo from "../Logo";
+import MobileMenu from "../MobileMenu";
+import SuperHeader from "../SuperHeader";
+import UnstyledButton from "../UnstyledButton";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -30,12 +32,20 @@ const Header = () => {
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Side />
+        <MobilActions>
+          <UnstyledButton>
+            <Icon id="shopping-bag" strokeWidth={2} />
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="search" strokeWidth={2} />
+          </UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)}>
+            <Icon id="hamburger" strokeWidth={2} />
+          </UnstyledButton>
+        </MobilActions>
       </MainHeader>
 
-      <MobileMenu
-        isOpen={showMobileMenu}
-        onDismiss={() => setShowMobileMenu(false)}
-      />
+      <MobileMenu isOpen={showMobileMenu} onDismiss={() => setShowMobileMenu(false)} />
     </header>
   );
 };
@@ -46,12 +56,21 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media ${QUERIES.tabletAndSmaller} {
+    border-top: 4px solid ${COLORS.gray[900]};
+    gap: ;
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
 `;
 
 const Side = styled.div`
@@ -67,6 +86,19 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: ${COLORS.secondary};
+  }
+`;
+
+const MobilActions = styled.div`
+  display: none;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: flex;
+    gap: 32px;
+  }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    gap: 16px;
   }
 `;
 
