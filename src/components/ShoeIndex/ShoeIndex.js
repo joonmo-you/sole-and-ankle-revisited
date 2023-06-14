@@ -72,7 +72,7 @@ const Header = styled.header`
   align-items: baseline;
 
   @media ${QUERIES.tabletAndSmaller} {
-    align-items: center;
+    align-items: flex-end;
   }
 `;
 
